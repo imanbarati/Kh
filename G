@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://imanbarati.github.io/javascript-winwheel/WinWheel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TweenMax/2.0.2/TweenMax.min.js"></script>
+    <style>
+        canvas { border: 2px solid #000; }
+        button { margin-top: 10px; padding: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <button onclick="startSpin()">Spin the Wheel</button>
+
+    <script>
+        var wheel = new WinWheel({
+            'numSegments': 6,
+            'outerRadius': 200,
+            'segments': [
+                {'fillStyle': 'red', 'text': '10% Off'},
+                {'fillStyle': 'blue', 'text': 'Free Shipping'},
+                {'fillStyle': 'green', 'text': '5% Off'},
+                {'fillStyle': 'yellow', 'text': 'Bonus Item'},
+                {'fillStyle': 'purple', 'text': '15% Off'},
+                {'fillStyle': 'orange', 'text': 'Mystery Gift'}
+            ],
+            'animation': {
+                'type': 'spinToStop',
+                'duration': 5,
+                'spins': 10,
+                'callbackFinished': function(segment) {
+                    alert('You won: ' + segment.text);
+                }
+            }
+        });
+
+        function startSpin() {
+            wheel.startAnimation();
+        }
+    </script>
+</body>
+</html>
